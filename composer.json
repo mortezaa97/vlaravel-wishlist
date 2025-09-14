@@ -1,0 +1,53 @@
+{
+    "name": "mortezaa97/wishlist",
+    "description": "A Laravel package designed to implement a wishlist feature",
+    "keywords": [
+        "mortezaa97",
+        "wishlist"
+    ],
+    "homepage": "https://github.com/mortezaa97/wishlist",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "morteza jafari",
+            "email": "mortezajafari76@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mortezaa97\\Wishlist\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mortezaa97\\Wishlist\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mortezaa97\\Wishlist\\WishlistServiceProvider"
+            ],
+            "aliases": {
+                "Wishlist": "Mortezaa97\\Wishlist\\WishlistFacade"
+            }
+        }
+    }
+}
