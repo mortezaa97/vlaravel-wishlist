@@ -17,7 +17,7 @@ class WishlistServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         // Load routes
-        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+//        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
 
         Gate::policy(\Mortezaa97\Wishlist\Models\Wishlist::class, WishlistPolicy::class);
         if ($this->app->runningInConsole()) {
