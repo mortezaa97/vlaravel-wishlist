@@ -22,11 +22,11 @@ class WishlistResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'user_id' => $this->user_id,
+            'id' => $this->id,
+            'user_id' => new UserResource($this->user),
             'ip' => $this->ip,
             'model' => $this->whenLoaded('model', function () {
                 $model = $this->model;
-
                 return match ($model->getMorphClass()) {
                     'Mortezaa97\\Shop\\Models\\Product' => new ProductSimpleResource($model),
                     'App\\Models\\Post' => new PostResource($model),

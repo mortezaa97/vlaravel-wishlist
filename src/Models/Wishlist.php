@@ -44,6 +44,10 @@ class Wishlist extends Model
     {
         return $this->belongsTo(User::class, 'update_by');
     }
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
     public function model(): MorphTo
     {
         return $this->morphTo('model');
