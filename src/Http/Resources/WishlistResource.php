@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace Mortezaa97\Wishlist\Http\Resources;
 
-use App\Http\Resources\StoryResource;
+use App\Http\Resources\PostResource;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Mortezaa97\Reviews\Http\Resources\ReviewResource;
+use Mortezaa97\Shop\Http\Resources\ProductSimpleResource;
 
 class WishlistResource extends JsonResource
 {
@@ -20,13 +23,20 @@ class WishlistResource extends JsonResource
     {
         return [
             'user_id' => $this->user_id,
-            'product_id' => $this->product_id,
-            'story_id' => $this->story_id,
-            'create_by' => $this->create_by,
-            'update_by' => $this->update_by,
+            'ip' => $this->ip,
+            'model' => $this->whenLoaded('model', function () {
+                $model = $this->model;
+
+                return match ($model->getMorphClass()) {
+                    'Mortezaa97\\Shop\\Models\\Product' => new ProductSimpleResource($model),
+                    'App\\Models\\Post' => new PostResource($model),
+                    'Mortezaa97\\Reviews\\Models\\Review' => new ReviewResource($model),
+                    default => $model,
+                };
+            }),
+            'created_by' => new UserResource($this->createBy),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'story' => StoryResource::make($this->story),
         ];
     }
 }

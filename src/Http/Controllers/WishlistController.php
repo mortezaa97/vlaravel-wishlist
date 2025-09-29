@@ -20,6 +20,11 @@ class WishlistController extends Controller
     {
         $items = new Wishlist;
 
+        $user = Auth::guard('api')->user();
+        $items = $items->where(function ($query) use ($user, $request) {
+            $query->where('user_id', $user?->id)->orWhere('ip', $request->ip);
+        });
+
         if ($request->conditions) {
             $items = $items->where(json_decode($request->conditions, true));
         }
