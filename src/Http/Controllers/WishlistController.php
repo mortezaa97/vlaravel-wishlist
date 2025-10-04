@@ -60,13 +60,13 @@ class WishlistController extends Controller
         //     }
         // }
 
-//        if ($request->story_slug) {
-//            $story = Story::where('slug', $request->story_slug)->first();
-//            if ($story) {
-//                $data['model_id'] = $story->id;
-//                $data['model_type'] = Story::class;
-//            }
-//        }
+        //        if ($request->story_slug) {
+        //            $story = Story::where('slug', $request->story_slug)->first();
+        //            if ($story) {
+        //                $data['model_id'] = $story->id;
+        //                $data['model_type'] = Story::class;
+        //            }
+        //        }
 
         $wishlist = Wishlist::updateOrCreate($conditions, $data);
 

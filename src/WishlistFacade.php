@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mortezaa97\Wishlist;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Mortezaa97\Wishlist\Skeleton\SkeletonClass
+ * @see Skeleton\SkeletonClass
  */
 class WishlistFacade extends Facade
 {

@@ -6,7 +6,6 @@ namespace Mortezaa97\Wishlist;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Mortezaa97\Reviews\Filament;
 use Mortezaa97\Wishlist\Filament\Resources\Wishlists\WishlistResource;
 
 class WishlistPlugin implements Plugin

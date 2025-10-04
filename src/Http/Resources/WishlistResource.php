@@ -27,6 +27,7 @@ class WishlistResource extends JsonResource
             'ip' => $this->ip,
             'model' => $this->whenLoaded('model', function () {
                 $model = $this->model;
+
                 return match ($model->getMorphClass()) {
                     'Mortezaa97\\Shop\\Models\\Product' => new ProductSimpleResource($model),
                     'App\\Models\\Post' => new PostResource($model),

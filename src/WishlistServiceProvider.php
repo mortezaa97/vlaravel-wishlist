@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mortezaa97\Wishlist;
 
 use Illuminate\Support\Facades\Gate;
@@ -20,7 +22,7 @@ class WishlistServiceProvider extends ServiceProvider
 
         $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
 
-        Gate::policy(\Mortezaa97\Wishlist\Models\Wishlist::class, WishlistPolicy::class);
+        Gate::policy(Models\Wishlist::class, WishlistPolicy::class);
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('stories.php'),
@@ -38,7 +40,7 @@ class WishlistServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'wishlist');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'wishlist');
 
         // Register the main class to use with the facade
         $this->app->singleton('wishlist', function () {
