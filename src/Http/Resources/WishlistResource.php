@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mortezaa97\Wishlist\Http\Resources;
 
+use App\Enums\ModelType;
 use App\Http\Resources\PostResource;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
@@ -25,6 +26,7 @@ class WishlistResource extends JsonResource
             'id' => $this->id,
             'user_id' => new UserResource($this->user),
             'ip' => $this->ip,
+            'model_type' => ModelType::from($this->model_type)->label(),
             'model' => $this->whenLoaded('model', function () {
                 $model = $this->model;
 
