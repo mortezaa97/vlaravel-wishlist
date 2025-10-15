@@ -29,10 +29,7 @@ class WishlistController extends Controller
             $items = $items->where(json_decode($request->conditions, true));
         }
 
-        if ($request->with) {
-            $items = $items->with($request->with);
-        }
-
+        $items = $items->with('user');
         return $request->noPaginate ? WishlistResource::collection($items->get()) : WishlistResource::collection($items->paginate());
     }
 
