@@ -25,7 +25,7 @@ class WishlistResource extends Resource
 
     protected static ?string $pluralModelLabel = 'علاقه مندی ها';
 
-    protected static string|null|UnitEnum $navigationGroup = 'بلاگ';
+    protected static string|null|UnitEnum $navigationGroup = 'مدیریت محتوا';
 
     public static function form(Schema $schema): Schema
     {
